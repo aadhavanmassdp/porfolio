@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aadhavan R - Developer & Tester Portfolio</title>
+  <style>
+    :root {
+      --header-gradient: linear-gradient(90deg, #7f9cf5 0%, #43e97b 100%);
+      --footer-gradient: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
+      --skills-section-bg: #fffde4;
+      --skills-pill-html: #ff7043;
+      --skills-pill-css: #42a5f5;
+      --skills-pill-js: #ffd600;
+      --skills-pill-python: #52be80;
+      --skills-pill-mongodb: #009688;
+      --skills-pill-java: #8e24aa;
+      --skills-pill-text: white;
+      --main-black: #212121;
+      --section-border: #7f9cf5;
+      --nav-hover: #def3fd;
+      --nav-active: #38f9d7;
+      --white-bg: #fff;
+      --footer-border: #38f9d7;
+      --header-shadow: 0 4px 20px 0 rgba(67, 227, 123, 0.13);
+      --footer-shadow: 0 -4px 20px 0 rgba(67, 233, 123, 0.08);
+      --subscript-color: #1565c0;
+      --tab-focus-outline: 2px solid #1976d2;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: var(--main-black);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: var(--header-gradient);
+      color: var(--main-black);
+      text-align: center;
+      padding: 2.2rem 1rem 1.5rem 1rem;
+      position: relative;
+      border-bottom-left-radius: 32px;
+      border-bottom-right-radius: 32px;
+      box-shadow: var(--header-shadow);
+      user-select: none;
+      margin: 0 0 28px 0;
+      border: none;
+      max-width: none;
+    }
+    header h1 {
+      font-size: 3rem;
+      font-weight: 900;
+      letter-spacing: 3px;
+      margin-bottom: 4px;
+      color: var(--main-black);
+      line-height: 1.1;
+      display: inline-block;
+      position: relative;
+    }
+    header h1 sub {
+      font-size: 1.05rem;
+      vertical-align: sub;
+      color: var(--subscript-color);
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-left: 6px;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      display: block;
+      margin-top: 4px;
+    }
+    main {
+      max-width: 960px;
+      margin: 38px auto 15px;
+      padding: 0 16px 60px;
+      flex-grow: 1;
+      width: 100%;
+    }
+    .tabs {
+      width: 100%;
+    }
+    .tab-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      border-bottom: 3px solid var(--section-border);
+      margin-bottom: 20px;
+      gap: 12px;
+      justify-content: center;
+    }
+    .tab-buttons button {
+      background: var(--white-bg);
+      border: 2px solid var(--section-border);
+      border-bottom: none;
+      border-radius: 10px 10px 0 0;
+      padding: 10px 26px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--main-black);
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(127,156,245,0.15);
+      transition: background 0.3s ease, color 0.3s ease;
+      outline-offset: 2px;
+      outline: none;
+    }
+    .tab-buttons button:hover,
+    .tab-buttons button:focus {
+      background: var(--nav-hover);
+      border-color: var(--nav-active);
+      color: var(--main-black);
+      box-shadow: 0 4px 14px rgba(127,156,245,0.3);
+      outline: var(--tab-focus-outline);
+    }
+    .tab-buttons button.active {
+      background: var(--nav-active);
+      color: var(--main-black);
+      border-bottom: 3px solid var(--white-bg);
+      box-shadow: none;
+      cursor: default;
+    }
+    .tab-panel {
+      display: none;
+      animation: fadeIn 0.4s ease forwards;
+      padding: 28px 32px 30px 32px;
+      border-radius: 0 12px 12px 12px;
+      background: var(--white-bg);
+      border: 2px solid var(--section-border);
+      box-shadow: 0 4px 20px #7f9cf522;
+      min-height: 220px;
+      margin-bottom: 14px;
+    }
+    .tab-panel.active {
+      display: block;
+    }
+    #description-panel {
+      background: #fff9c4;
+      border-left: 7px solid #ffd600;
+      box-shadow: 0 4px 18px #ffd60033;
+    }
+    #skills-panel ul {
+      margin-top: 12px;
+      padding-left: 0;
+      background: #e3f2fd;
+      border-radius: 12px;
+      padding: 14px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px 18px;
+    }
+    #skills-panel ul li {
+      display: inline-block;
+      border-radius: 24px;
+      padding: 12px 26px 12px 18px;
+      color: var(--skills-pill-text);
+      font-weight: 600;
+      font-size: 1.14rem;
+      box-shadow: 0 2px 8px #1976d222;
+      border: none;
+      cursor: default;
+    }
+    #skills-panel ul li.html      { background: var(--skills-pill-html); }
+    #skills-panel ul li.css       { background: var(--skills-pill-css); }
+    #skills-panel ul li.js        { background: var(--skills-pill-js); color: #263238; }
+    #skills-panel ul li.python    { background: var(--skills-pill-python); }
+    #skills-panel ul li.mongodb   { background: var(--skills-pill-mongodb); }
+    #skills-panel ul li.java      { background: var(--skills-pill-java); }
+    #skills-panel ul li.automation { background: #009688; }
+    #skills-panel ul li:hover {
+      opacity: 0.96;
+      filter: brightness(1.08);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 6px;
+    }
+    th, td {
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      text-align: left;
+      background: #fffdfcdd;
+      color: #212121;
+    }
+    th {
+      background: var(--section-border);
+      font-weight: 700;
+    }
+    form label {
+      display: block;
+      margin: 14px 0 8px 0;
+      font-weight: 600;
+      color: #212121;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 12px 14px;
+      margin-bottom: 16px;
+      border-radius: 8px;
+      border: 2px solid #43e97b;
+      font-size: 1.1em;
+      box-shadow: 0 2px 8px #43e97b22;
+      background: #f5faff;
+      color: #212121;
+      resize: vertical;
+      min-height: 70px;
+    }
+    a.link {
+      color: #1976d2;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    a.link:hover,
+    a.link:focus {
+      color: #43e97b;
+      outline: none;
+      text-decoration: underline;
+    }
+    button {
+      padding: 14px 38px;
+      cursor: pointer;
+      background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
+      color: #212121;
+      border: none;
+      border-radius: 32px;
+      font-size: 1.15em;
+      font-weight: 700;
+      letter-spacing: 1px;
+      box-shadow: 0 2px 10px #43e97b33;
+      user-select: none;
+      transition: background 0.24s, color 0.24s;
+    }
+    button:hover {
+      background: linear-gradient(90deg, #1976d2 0%, #43e97b 100%);
+      color: #fff;
+    }
+    footer {
+      background: var(--footer-gradient);
+      color: var(--main-black);
+      border-top-left-radius: 28px;
+      border-top-right-radius: 28px;
+      box-shadow: var(--footer-shadow);
+      text-align: center;
+      padding: 22px 0 18px 0;
+      font-weight: 600;
+      letter-spacing: 2px;
+      font-size: 1.07em;
+      margin: 0;
+      border: none;
+      width: 100%;
+      max-width: none;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 720px) {
+      .tab-buttons button {
+        padding: 8px 13px;
+        font-size: 0.98rem;
+      }
+      #skills-panel ul li {
+        padding: 8px 12px 8px 11px;
+        font-size: 0.97rem;
+      }
+      main {
+        margin: 20px 4px 25px;
+      }
+      header, footer {
+        border-radius: 10px;
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>
+      AADHAVAN R
+      <sub>Developer &amp; Tester</sub>
+    </h1>
+  </header>
+  <main>
+    <div class="tabs" role="tablist" aria-label="Portfolio Sections Tabs">
+      <div class="tab-buttons">
+        <button role="tab" aria-selected="true" aria-controls="description-panel" id="description-tab" tabindex="0" class="active">About</button>
+        <button role="tab" aria-selected="false" aria-controls="skills-panel" id="skills-tab" tabindex="-1">Skills</button>
+        <button role="tab" aria-selected="false" aria-controls="projects-panel" id="projects-tab" tabindex="-1">Projects</button>
+        <button role="tab" aria-selected="false" aria-controls="certifications-panel" id="certifications-tab" tabindex="-1">Certifications</button>
+        <button role="tab" aria-selected="false" aria-controls="education-panel" id="education-tab" tabindex="-1">Education</button>
+        <button role="tab" aria-selected="false" aria-controls="internships-panel" id="internships-tab" tabindex="-1">Internships</button>
+        <button role="tab" aria-selected="false" aria-controls="contact-panel" id="contact-tab" tabindex="-1">Contact</button>
+      </div>
+      <section id="description-panel" class="tab-panel active" role="tabpanel" tabindex="0" aria-labelledby="description-tab">
+        <h2>About Me</h2>
+        <div style="font-size:1.05em;">
+        <p>Hello! I am a fresher <b>Developer &amp; Tester</b> with a passion for full stack development, manual testing, and automation testing.</p>
+        <p>I have experience building scalable web applications, crafting test strategies, and implementing automation frameworks to ensure software quality. <b>Ready to contribute and grow in a professional environment!</b></p>
+        </div>
+      </section>
+      <section id="skills-panel" class="tab-panel" role="tabpanel" tabindex="0" aria-labelledby="skills-tab">
+        <h2>Skills</h2>
+        <ul>
+          <li class="html">HTML5</li>
+          <li class="css">CSS3</li>
+          <li class="oops" style="color:#f5c907;">OOPS</li>
+          <li class="python">Python</li>
+          <li class="mongodb">MongoDB</li>
+          <li class="java">Java</li>
+          <li class="automation" style="color:#fff;">Automation testing</li>
+          <li class="selenium" style="color:#f50707">Mannual testing</li>
+          
+        </ul>
+      </section>
+      <section id="projects-panel" class="tab-panel" role="tabpanel" tabindex="0" aria-labelledby="projects-tab">
+        <h2>Projects</h2>
+        <table>
+          <thead><tr><th>Name</th><th>Description</th><th>Tech</th><th>Link</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><a href="https://yourportfolio.com" target="_blank" rel="noopener noreferrer" class="link">Personal Data Monitor</a></td>
+              <td>Data encryption and Data security</td>
+              <td>Java, Java swing </td>
+              <td><a href="https://github.com/aadhavanmassdp/personal-data-monitor" target="_blank" rel="noopener noreferrer" class="link">view</a></td>
+            </tr>
+            <tr>
+              <td><a href="https://ecommerceapp.com" target="_blank" rel="noopener noreferrer" class="link">E-Commerce</a></td>
+              <td>Cycles App</td>
+              <td>HTML, CSS, JS</td>
+              <td><a href="https://github.com/aadhavanmassdp/cycle-app" target="_blank" rel="noopener noreferrer" class="link">View</a></td>
+            </tr>
+            <tr>
+              <td><a href="prediction of DDos attack" target="_blank" rel="noopener noreferrer" class="link">prediction of DDos attack</a></td>
+              <td>Prediction of Cyber attack using Machine Learning</td>
+              <td>Python,streamlit</td>
+              <td><a href="https://github.com/aadhavanmassdp/attack-prediction" target="_blank" rel="noopener noreferrer" class="link">View</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <section id="certifications-panel" class="tab-panel" role="tabpanel" tabindex="0" aria-labelledby="certifications-tab">
+        <h2>Certifications</h2>
+        <table>
+          <thead><tr><th>Certification</th><th>Organization</th><th>Year</th></tr></thead>
+          <tbody>
+             <tr><td>Fundamentals of Project management Foundations</td><td>Linkedin Learning</td><td>2025</td></tr>
+              <tr><td>software engineering Job stimulation </td><td>forage Accenture </td><td>2025</td></tr>
+              <tr><td>CSS,JS,Bootstrap,Python,React</td><td>Udemy</td><td>2024</td></tr>
+              <tr><td>Diploma in Python</td><td>Udemy</td><td>2023</td></tr>
+              <tr><td>Automation Tester& Mannual testing</td><td>Greens technology</td><td>2022</td></tr>
+                         </tbody>
+        </table>
+      </section>
+      <section id="education-panel" class="tab-panel" role="tabpanel" tabindex="0" aria-labelledby="education-tab">
+        <h2>Education</h2>
+        <table>
+          <thead><tr><th>Degree</th><th>Institution</th><th>Year</th></tr></thead>
+          <tbody>
+            <tr><td>B.sc in Computer science </td><td>Mahendra arts and science college</td><td>2022</td></tr>
+            <tr><td>Master of computer applications</td><td>Paavai engineering college</td><td>2025</td></tr>
+          </tbody>
+        </table>
+      </section>
+      <section id="internships-panel" class="tab-panel" role="tabpanel" tabindex="0" aria-labelledby="internships-tab">
+        <h2>Internships</h2>
+        <ul style="list-style: none; padding-left: 0;">
+          
+          <li>
+            <div style="font-weight:600;">Associate web Developer Intern (3 Months) – Aspire Systems</div>
+            <div><b>Responsibilities:</b> Web development (HTML, CSS, JS,Python,MongoDB), building scalable application,bug fixes.</div>
+          </li> <br>
+          <li style="margin-bottom:14px;">
+            <div style="font-weight:600;">Machine Learning Intern (1 Months)-Orus Solutions</div>
+            <div><b>Responsibilities:</b> Developed ML models, data preprocessing, basic understanding of Machine learning.</div>
+            </li>
+          <li style="margin-top:10px;">
+            <div style="font-weight:600;">Full Stack Developer Intern (1 Months) – Arttifai AI</div>
+            <div><b>Responsibilities:</b> End-to-end web app prototype development; backend and frontend integration.</div>
+          </li>
+        </ul>
+      </section>
+      <section id="contact-panel" class="tab-panel" role="tabpanel" tabindex="0" aria-labelledby="contact-tab">
+        <h2>Contact Me</h2>
+        <p><strong>Phone:</strong> <a href="tel:+918489920988" class="link">8489920988</a></p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/aadhavanmassdp" target="_blank" rel="noopener noreferrer" class="link">https://github.com/aadhavanmassdp</a></p>
+        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/aadhavan-r-3a2b00257/" target="_blank" rel="noopener noreferrer" class="link">https://www.linkedin.com/in/aadhavan-r-3a2b00257/</a></p>
+             </section>
+    </div>
+  </main>
+  <footer>
+    <p>&copy; 2025 Aadhavan R. All rights reserved.</p>
+  </footer>
+  <script>
+    const tabButtons = document.querySelectorAll('.tab-buttons button');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        tabButtons.forEach(btn => {
+          btn.classList.remove('active');
+          btn.setAttribute('aria-selected', 'false');
+          btn.setAttribute('tabindex', '-1');
+        });
+        tabPanels.forEach(panel => panel.classList.remove('active'));
+        button.classList.add('active');
+        button.setAttribute('aria-selected', 'true');
+        button.setAttribute('tabindex', '0');
+        const panelId = button.getAttribute('aria-controls');
+        const panel = document.getElementById(panelId);
+        panel.classList.add('active');
+        panel.focus();
+      });
+    });
+    const tabsContainer = document.querySelector('.tab-buttons');
+    tabsContainer.addEventListener('keydown', (e) => {
+      const LEFT = 37, RIGHT = 39, HOME = 36, END = 35;
+      let index = Array.from(tabButtons).findIndex(btn => btn.classList.contains('active'));
+      if (e.keyCode === RIGHT) {
+        e.preventDefault();
+        let nextIndex = (index + 1) % tabButtons.length;
+        tabButtons[nextIndex].click();
+        tabButtons[nextIndex].focus();
+      } else if (e.keyCode === LEFT) {
+        e.preventDefault();
+        let prevIndex = (index - 1 + tabButtons.length) % tabButtons.length;
+        tabButtons[prevIndex].click();
+        tabButtons[prevIndex].focus();
+      } else if (e.keyCode === HOME) {
+        e.preventDefault();
+        tabButtons[0].click();
+        tabButtons[0].focus();
+      } else if (e.keyCode === END) {
+        e.preventDefault();
+        tabButtons[tabButtons.length - 1].click();
+        tabButtons[tabButtons.length - 1].focus();
+      }
+    });
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = this.elements['name'].value;
+      alert(`Thank you, ${name}! Your message has been sent.`);
+      this.reset();
+    });
+  </script>
+</body>
+</html>
